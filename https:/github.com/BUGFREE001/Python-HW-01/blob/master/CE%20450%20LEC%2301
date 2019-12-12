@@ -1,0 +1,194 @@
+#1
+
+def fancy_printing (n):
+    def loop(m):
+        for i in range(m):
+            if i%n ==0:
+                print("Buzz!")
+            else:
+                print(i)
+    return loop
+
+replace = fancy_printing (5)
+replace(10)
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+#2
+
+def sum_num(n):
+    if n==1:
+        return 1 
+    elif n==0:
+        return 0
+    else:
+        return n+sum_num(n-2)
+
+print(sum_num(5))
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+#3
+
+# is_prime(n) should be given 
+# this is only for testing purposes 
+def is_prime(n):
+    return n==2 or n==3 or n==5
+
+def cnt_primes(m):
+    if m==1:
+        return 0 
+    if is_prime(m):
+        return 1+cnt_primes(m-1)
+    else:
+        return 0+cnt_primes(m-1)
+
+print(cnt_primes(6))
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+#4
+
+def triple(m):
+    return m*3
+    
+def foo(f, n):
+    def loop(m):
+        res=m
+        for i in range(n):
+            res=f(res)
+        return res    
+    return loop
+    
+a=foo(triple, 5)
+print(a(1))   
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+#5
+
+def op(a, b, c):
+    if b==0:
+        return c
+    else:
+        return a+op(a,b-1,c)
+    
+print(op (2, 4, 3))
+print(op (0, 3, 2))
+print(op (3, 0, 2))
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+#6
+
+def checking(x):
+    x=str(x)
+    if len(x)==1:
+        return True
+    if int(x[0])>int(x[1]): 
+        return False
+    return checking(x[1:])    
+    
+print(checking (113332))  
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+#7
+
+def cal(n):
+    if n==1:
+        return 1
+    if n==0:
+        return 0
+    return n *cal(n-2)  
+    
+print(cal(5))  
+print(cal(8))    
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+#8
+
+def triple(n):
+    return n*3
+
+def square(n):
+    return n**2
+
+def intscts(f, x):
+    def g(f2):
+        return f(x)==f2(x)
+    return g
+    
+at3 = intscts(square, 3)
+print(at3 (triple))
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+#9
+
+def A(n):
+    if n <= 3:
+        return n
+    return A(n - 1) + 2 * A(n - 2) + 3 * A(n - 3)
+    
+print(A(5))    
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+#10
+
+def contains7(x): 
+    while (x > 0): 
+        if (x % 10 == 7): 
+            break
+        x = x / 10
+    return (x > 0) 
+
+def bnc_bck_frth(k):
+    up=True
+    res=1
+    i=1
+    while i<k:
+        if i%7==0 or contains7(i):
+            if up:
+                up=False
+            else:
+                up=True
+        if up:
+            res+=1
+        else:
+            res-=1
+        i+=1
+    return res
+
+print(bnc_bck_frth(7))    
+print(bnc_bck_frth(8)) 
+print(bnc_bck_frth(15))
+print(bnc_bck_frth(21))
+print(bnc_bck_frth(22))
+print(bnc_bck_frth(30))
+print(bnc_bck_frth(68))
+print(bnc_bck_frth(69))
+print(bnc_bck_frth(70))
+print(bnc_bck_frth(71))
+print(bnc_bck_frth(72))
+print(bnc_bck_frth(100))
